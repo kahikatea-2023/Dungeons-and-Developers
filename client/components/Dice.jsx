@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom'
 import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Icosahedron } from '@react-three/drei'
-import { Physics, usePlane, useBox, useConvexPolyhedron } from '@react-three/cannon'
-// change nicecolors to something else later .. planes to be see-though? 
+import {
+  Physics,
+  usePlane,
+  useBox,
+  useConvexPolyhedron,
+} from '@react-three/cannon'
+// change nicecolors to something else later .. planes to be see-though?
 import niceColors from 'nice-color-palettes'
 // css needs to be set up and imported
 import './styles.css'
@@ -75,8 +80,6 @@ const Plane = ({ color, ...props }) => {
   )
 }
 
-
-
 const D20 = (props) => {
   const sides = 20
   const verticesPerFace = 3
@@ -86,7 +89,7 @@ const D20 = (props) => {
     return {
       args: icosahedronGeometry,
       mass: 1,
-      ...props
+      ...props,
     }
   })
 
@@ -102,7 +105,13 @@ const D20 = (props) => {
   }, [])
 
   return (
-    <Icosahedron args={radius} ref={ref} onClick={() => api.applyImpulse([0, 20, 0], [0, 0, 0])} castShadow receiveShadow>
+    <Icosahedron
+      args={radius}
+      ref={ref}
+      onClick={() => api.applyImpulse([0, 20, 0], [0, 0, 0])}
+      castShadow
+      receiveShadow
+    >
       {/* TODO What's causing text textures to appear stretched? Is the UV map messed up? */}
       {/* {Array.from(Array(sides)).map((_, i) => (
         <meshPhongMaterial attachArray="material" map={createTextTexture(i + 1, textColor, dieColor)} key={i} />
@@ -132,16 +141,46 @@ const D20 = (props) => {
 }
 
 ReactDOM.render(
-  <Canvas concurrent shadowMap sRGB gl={{ alpha: false }} camera={{ position: [0, 0, 10] }}>
+  <Canvas
+    concurrent
+    shadowMap
+    sRGB
+    gl={{ alpha: false }}
+    camera={{ position: [0, 0, 10] }}
+  >
     <hemisphereLight intensity={0.35} />
-    <spotLight position={[30, 0, 30]} angle={0.3} penumbra={1} intensity={2} castShadow shadow-mapSize-width={256} shadow-mapSize-height={256} />
+    <spotLight
+      position={[30, 0, 30]}
+      angle={0.3}
+      penumbra={1}
+      intensity={2}
+      castShadow
+      shadow-mapSize-width={256}
+      shadow-mapSize-height={256}
+    />
     <pointLight position={[-30, 0, -30]} intensity={0.5} />
     <Physics gravity={[0, 0, -30]}>
       <Plane color={niceColors[17][4]} />
-      <Plane color={niceColors[17][1]} position={[-10, 0, 0]} rotation={[0, 1, 0]} />
-      <Plane color={niceColors[17][2]} position={[10, 0, 0]} rotation={[0, -1, 0]} />
-      <Plane color={niceColors[17][3]} position={[0, 10, 0]} rotation={[1, 0, 0]} />
-      <Plane color={niceColors[17][0]} position={[0, -10, 0]} rotation={[-1, 0, 0]} />
+      <Plane
+        color={niceColors[17][1]}
+        position={[-10, 0, 0]}
+        rotation={[0, 1, 0]}
+      />
+      <Plane
+        color={niceColors[17][2]}
+        position={[10, 0, 0]}
+        rotation={[0, -1, 0]}
+      />
+      <Plane
+        color={niceColors[17][3]}
+        position={[0, 10, 0]}
+        rotation={[1, 0, 0]}
+      />
+      <Plane
+        color={niceColors[17][0]}
+        position={[0, -10, 0]}
+        rotation={[-1, 0, 0]}
+      />
       <D20 position={[4, 0, 2]} rotation={[2, 0, 0]} />
     </Physics>
   </Canvas>,
