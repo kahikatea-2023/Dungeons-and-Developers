@@ -1,6 +1,6 @@
 import connection from './connection'
 import { Outcome } from '../../models/models'
 
-export function getAllOutcomes(db = connection): Promise<Outcome[]> {
-  return db('outcomes').select()
+export async function getAllOutcomes(db = connection) {
+  return await db('outcomes').select() as Outcome[]
 }

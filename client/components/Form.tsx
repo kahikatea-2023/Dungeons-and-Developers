@@ -1,9 +1,14 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+
 function Form() {
-  return (
+  const queryClient = useQueryClient()
+  const mutations = useMutation(addUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['getOutcomes'])
+    },
+  })
 
-    <p>I'm the Form</p>
-
-  )
+  return <p>I'm the Form</p>
 }
 
 export default Form
