@@ -3,8 +3,10 @@ import { Outcome } from '../../models/models'
 
 const rootUrl = '/api/v1/routes'
 
-export function getOutcomes(): Promise<Outcome[]> {
-  return request.get(rootUrl).then((res) => {
-    return res.body.outcomes
-  })
+export async function getOutcomes() {
+  const res = await request.get(rootUrl)
+  console.log(res.body);
+  
+    return res.body as Outcome[]
+
 }
