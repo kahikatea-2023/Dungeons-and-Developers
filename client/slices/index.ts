@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import fruits from './fruits'
+import outcomes from './slice'
 
 export default combineReducers({
-  fruits,
+  outcomes,
 })
