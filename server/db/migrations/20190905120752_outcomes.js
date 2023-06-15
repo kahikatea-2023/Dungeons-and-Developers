@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable('outcomes', (table) => {
-    table.increments('id')
+    table.integer('id')
     table.string('outcome')
   })
 }
