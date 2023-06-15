@@ -26,11 +26,16 @@
     ]
   },
   "dependencies": {
+    "@react-three/cannon": "^6.5.2",
+    "@react-three/drei": "^9.74.15",
+    "@react-three/fiber": "^8.13.3",
     "@tanstack/react-query": "^4.29.13",
+    "@types/three": "^0.152.1",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2",
-    "superagent": "7.1.1"
+    "superagent": "7.1.1",
+    "three": "^0.153.0"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
