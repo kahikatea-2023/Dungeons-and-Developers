@@ -17,5 +17,5 @@ export interface UserDraft {
 }
 
 export interface User extends UserDraft {
-  id: number  
+  id: number
 }
