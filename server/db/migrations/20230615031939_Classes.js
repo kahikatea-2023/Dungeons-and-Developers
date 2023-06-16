@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable('classes', (table) => {
-    table.integer('id').primary()
+    table.increments('id').primary()
     table.string('class_name')
   })
 }
