@@ -39,18 +39,21 @@ body {
 }
 
 #canvas {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
   width: 50vw;
   height: 55vh;
-  align-items: left;
-  justify-content: center;
+  align-items: start;
+  justify-items: center;
   border-color: aqua;
   border: 5px solid;
   margin: 0%;
-  position: absolute; /* position #player absolutely */
-  top: 50%; /* align #player to middle */
+  position: absolute;
+  top: 50%;
   left: 20vw; 
-  transform: translateY(-50%); /* adjust #player's position so its middle aligns with the middle of the screen */
+  transform: translateY(-50%);
 }
 
 #numberBox {
@@ -89,7 +92,7 @@ body {
   display: flex;
   flex-direction: column;
   border: 5px solid;
-  border-color: blueviolet;
+  /* border-color: blueviolet; */
   height: 15vh;
   width: 50vw;
   position: absolute; /* position #player absolutely */
@@ -98,6 +101,21 @@ body {
   background-color: white;
   overflow: auto;
 }
+
+#outcomeList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+  color: white;
+  background-color: rgba(0,0,0,0.7);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+
 
 
 
