@@ -6,10 +6,8 @@ function Game() {
   // const outcomes = useAppSelector((state) => state.outcomes)
   // const dispatch = useAppDispatch()
 
-
   const outcomeQuery = useQuery(['getOutcomes'], async () => {
     return await getOutcomes()
-
   })
 
   const userQuery = useQuery(['getUsers'], async () => {
@@ -18,15 +16,39 @@ function Game() {
 
   return (
     <>
-      <p>I'm the game</p>
-
       {!outcomeQuery.isLoading &&
         outcomeQuery.data &&
         outcomeQuery.data.map((outcome) => {
           return (
-            <div key={outcome.outcome} className='outcome'>{outcome.outcome}</div>
+            <div key={outcome.outcome} className="outcome">
+              {outcome.outcome}
+            </div>
           )
         })}
+
+      <div id="container">
+        <div id="player">
+          <p>
+            Player: Lorem Ipsum es simplemente el texto de relleno de las
+            imprentas y
+          </p>
+        </div>
+        <div id="numberBox">
+          <p>
+            ScoreBoard: Lorem Ipsum es simplemente el texto de relleno de las
+            imprentas y
+          </p>
+        </div>
+        <div id="center-content">
+          <h1>Dungeons & Developers</h1>
+          <div id="canvas"></div>
+          <div id="commentBox">
+            <p>
+              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+            </p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
