@@ -1,19 +1,29 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import React, { useEffect, useState } from "react"
-import { getClasses } from "../apis/api"
+import { addUser, getClasses } from "../apis/api"
 import { User, UserDraft } from "../../models/models"
 
 
 function Form() {
 
-  const [userData, setUserData] = useState({
+  const queryClient = useQueryClient()
+  const mutations = useMutation(addUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('getUsers')
+    },
+  })
+
+  const initialState = {
     name: '',
     classId: 0,
-  } as UserDraft)
+  } as UserDraft
+
+  const [userData, setUserData] = useState(initialState)
 
   // get the classes list// need some help
   const { isLoading, data } = useQuery(['getClasses'], async () => {
     return await getClasses()
+    console.log(data)
   })
 
 
@@ -26,19 +36,21 @@ function Form() {
   }
 
   function handleSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    const name = event.target.name
     const value = +event.target.value
-
     const newUserData: UserDraft = { ...userData, classId: value }
+    setUserData(newUserData)
   }
 
-  function handleSubmit() {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    mutations.mutate(userData)
+    setUserData(initialState)
 
   }
 
   return (
     <>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Player Name: </label>
           <input type="text" name="name" id="" onChange={handleChange} value={userData.name} />
@@ -55,7 +67,7 @@ function Form() {
           }
         </div>
         <div>
-          <button type="submit" onSubmit={handleSubmit}>Submit</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </>

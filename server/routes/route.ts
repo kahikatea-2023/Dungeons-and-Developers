@@ -16,22 +16,7 @@ router.get('/outcomes', async (req, res) => {
   }
 })
 
-// CLASSES
-
-router.get('/classes',async (req, res) => {
-  try {
-    const classes = await db.getClasses()
-    res.json(classes)
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: ' Route: Something went wrong getting classes' })
-  }
-})
-
-//USERS
-
-//GET users
-router.get('/users',async (req, res) => {
+router.get('/users', async (req, res) => {
   try {
     const users = await db.getUsers()
     res.json(users)
@@ -41,12 +26,21 @@ router.get('/users',async (req, res) => {
   }
 })
 
-//POST user
-router.post('/user', async (req,res) => {
+router.get('/classes', async (req, res) => {
+  try {
+    const classes = await db.getClasses()
+    res.json(classes)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: ' Route: Something went wrong getting classes' })
+  }
+})
+
+router.post('/user', async (req, res) => {
   try {
     //need to post the following shape
-    // {name: string, classId}
-    await db.addUser({...req.body})
+    // {id: number, name: string, classId}
+    await db.addUser({ ...req.body })
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: ' Route: Something went wrong getting classes' })
