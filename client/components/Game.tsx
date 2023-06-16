@@ -35,7 +35,11 @@ function Game() {
               outcomeQuery.data &&
               outcomeQuery.data.map((outcome) => {
                 return (
-                  <div key={outcome.outcome} className="outcome" id='outcomeList'>
+                  <div
+                    key={outcome.outcome}
+                    className="outcome"
+                    id="outcomeList"
+                  >
                     {outcome.id}
                   </div>
                 )
