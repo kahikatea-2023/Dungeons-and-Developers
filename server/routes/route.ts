@@ -4,6 +4,8 @@ import * as db from '../db/db'
 
 const router = Router()
 
+// OUTCOMES
+
 router.get('/outcomes', async (req, res) => {
   try {
     const outcomes = await db.getAllOutcomes()
@@ -14,15 +16,7 @@ router.get('/outcomes', async (req, res) => {
   }
 })
 
-router.get('/users',async (req, res) => {
-  try {
-    const users = await db.getUsers()
-    res.json(users)
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: ' Route: Something went wrong getting users' })
-  }
-})
+// CLASSES
 
 router.get('/classes',async (req, res) => {
   try {
@@ -34,10 +28,24 @@ router.get('/classes',async (req, res) => {
   }
 })
 
+//USERS
+
+//GET users
+router.get('/users',async (req, res) => {
+  try {
+    const users = await db.getUsers()
+    res.json(users)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: ' Route: Something went wrong getting users' })
+  }
+})
+
+//POST user
 router.post('/user', async (req,res) => {
   try {
     //need to post the following shape
-    // {id: number, name: string, classId}
+    // {name: string, classId}
     await db.addUser({...req.body})
   } catch (error) {
     console.log(error)
