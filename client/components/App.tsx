@@ -1,26 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { fetchOutcomes } from '../slices/slice'
 import Form from './Form'
 import Game from './Game'
-import Nav from './Nav'
+// import Nav from './Nav'
 
 function App() {
- const [page, setPage] = useState('form')
-  
-  
+  const [page, setPage] = useState('form')
 
- function handleClick(path:string) {
-  
- }
+  function handleClick(path: string) {
+    setPage(path)
+  }
 
   return (
     <main>
-
-      <Nav />
       <Form />
       <Game />
-
     </main>
   )
 }
