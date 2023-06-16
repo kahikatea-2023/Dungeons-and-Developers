@@ -3,11 +3,9 @@ import { getOutcomes } from '../apis/api'
 import { getUsers } from '../apis/api'
 import Tile from './Tile'
 import Form from './Form'
+import { useState } from 'react'
 
 function Game() {
-  // const outcomes = useAppSelector((state) => state.outcomes)
-  // const dispatch = useAppDispatch()
-
   const outcomeQuery = useQuery(['getOutcomes'], async () => {
     return await getOutcomes()
   })
@@ -15,6 +13,18 @@ function Game() {
   const userQuery = useQuery(['getUsers'], async () => {
     return await getUsers()
   })
+
+  const [clickedOutcomeIds, setClickedOutcomeIds] = useState([])
+
+  const handleOutcomeClick = (id) => {
+    if (clickedOutcomeIds.includes(id)) {
+      setClickedOutcomeIds(
+        clickedOutcomeIds.filter((outcomeId) => outcomeId !== id)
+      )
+    } else {
+      setClickedOutcomeIds([...clickedOutcomeIds, id])
+    }
+  }
 
   return (
     <>
@@ -39,8 +49,11 @@ function Game() {
                     key={outcome.outcome}
                     className="outcome"
                     id="outcomeList"
+                    onClick={() => handleOutcomeClick(outcome.id)}
                   >
-                    {outcome.id}
+                    {clickedOutcomeIds.includes(outcome.id)
+                      ? outcome.outcome
+                      : outcome.id}
                   </div>
                 )
               })}
