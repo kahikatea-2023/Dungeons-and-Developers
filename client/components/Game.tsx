@@ -58,11 +58,6 @@ function Game() {
                 )
               })}
           </div>
-          <div id="commentBox">
-            <p>
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-            </p>
-          </div>
         </div>
       </div>
     </>

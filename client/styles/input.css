@@ -72,6 +72,8 @@ body {
 }
 
 #player {
+  background-color: rgba(0,0,0,0.7);
+  box-sizing: border-box;
   justify-content: left;
   display: flex;
   flex-direction: column;
@@ -85,22 +87,12 @@ body {
   transform: translateY(-50%); /* adjust #player's position so its middle aligns with the middle of the screen */
   background-color: white;
   overflow: auto;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
 }
 
-#commentBox {
-  justify-content:center;
-  display: flex;
-  flex-direction: column;
-  border: 5px solid;
-  /* border-color: blueviolet; */
-  height: 15vh;
-  width: 50vw;
-  position: absolute; /* position #player absolutely */
-  bottom: 3%; /* align #player to middle */
-  left: 20vw;
-  background-color: white;
-  overflow: auto;
-}
+
 
 #outcomeList {
   display: flex;
