@@ -1,6 +1,6 @@
 interface Props {
   outcome: {id: number, outcome: string}
-  handleClick: (id : number) => void
+  handleClick: (outcome: string) => void
 }
 
 function Tile(props: Props) {
@@ -8,8 +8,8 @@ function Tile(props: Props) {
 
   return (
     <>
-      <div className="tile" onClick={() => {props.handleClick}}>
-        <p >{props.id}</p>
+      <div className="tile" onClick={() => {props.handleClick(props.outcome.outcome)}}>
+        <p >{props.outcome.id}</p>
       </div>
     </>
   )
