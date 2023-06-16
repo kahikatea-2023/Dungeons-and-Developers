@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { getOutcomes, getUsers } from '../apis/api'
+import { getOutcomes } from '../apis/api'
 import Tile from './Tile'
+import Form from './Form'
+import { useState } from 'react'
 
 function Game() {
-  // const outcomes = useAppSelector((state) => state.outcomes)
-  // const dispatch = useAppDispatch()
-
   const outcomeQuery = useQuery(['getOutcomes'], async () => {
     return await getOutcomes()
   })
@@ -19,7 +18,7 @@ function Game() {
 
   return (
     <>
-      {/* {!outcomeQuery.isLoading &&
+      {!outcomeQuery.isLoading &&
         outcomeQuery.data &&
         outcomeQuery.data.map((outcome) => {
           return (
@@ -27,7 +26,7 @@ function Game() {
               {outcome.outcome}
             </div>
           )
-        })} */}
+        })}
 
       <div id="container">
         <div id="player">
@@ -54,7 +53,22 @@ function Game() {
         </div>
         <div id="center-content">
           <h1>Dungeons & Developers</h1>
-          <div id="canvas"></div>
+          <div id="canvas">
+            {!outcomeQuery.isLoading &&
+              outcomeQuery.data &&
+              outcomeQuery.data.map((outcome) => {
+                return (
+                  <div
+                    key={outcome.outcome}
+                    className="outcome"
+                    id="outcomeList"
+                    onClick={() => handleOutcomeClick(outcome.id)}
+                  >
+
+                  </div>
+                )
+              })}
+          </div>
           <div id="commentBox">
             <p>
               Lorem Ipsum es simplemente el texto de relleno de las imprentas y
