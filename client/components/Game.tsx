@@ -10,15 +10,15 @@ function Game() {
   })
   return (
     <>
-      <p>I'm the game</p>
-
-      {!isLoading && 
-      data &&
-      data.map((outcome) => {
-        return (
-          <div key={outcome.outcome} className='outcome'>{outcome.outcome}</div>
-        )
-      })}
+      {!isLoading &&
+        data &&
+        data.map((outcome) => {
+          return (
+            <div key={outcome.outcome} className="outcome">
+              <div>{outcome.outcome}</div>
+            </div>
+          )
+        })}
     </>
   )
 }

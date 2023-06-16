@@ -40,29 +40,17 @@ body {
 
 #canvas {
   display: flex;
-  width: 600px;
-  height: 400px;
-  align-items: center;
+  width: 50vw;
+  height: 55vh;
+  align-items: left;
   justify-content: center;
   border-color: aqua;
   border: 5px solid;
   margin: 0%;
-}
-
-#player {
-  justify-content: left;
-  display: flex;
-  flex-direction: column;
-  border: 5px solid;
-  border-color: blueviolet;
-  height: 350px;
-  width: 200px;
   position: absolute; /* position #player absolutely */
   top: 50%; /* align #player to middle */
-  left: 30px; /* push #player to left edge */
+  left: 20vw; 
   transform: translateY(-50%); /* adjust #player's position so its middle aligns with the middle of the screen */
-  background-color: white;
-  overflow: auto;
 }
 
 #scoreBoard {
@@ -71,11 +59,26 @@ body {
   flex-direction: column;
   border: 5px solid;
   border-color: blueviolet;
-  height: 350px;
-  width: 200px;
+  height: 55vh;
+  width: 22vw;
   position: absolute; /* position #player absolutely */
   top: 50%; /* align #player to middle */
-  right: 30px; 
+  right: 4vw; 
+  transform: translateY(-50%); /* adjust #player's position so its middle aligns with the middle of the screen */
+  overflow: auto;
+}
+
+#player {
+  justify-content: left;
+  display: flex;
+  flex-direction: column;
+  border: 5px solid;
+  border-color: blueviolet;
+  height: 55vh;
+  width: 12vw;
+  position: absolute; /* position #player absolutely */
+  top: 50%; /* align #player to middle */
+  left: 2vw; /* push #player to left edge */
   transform: translateY(-50%); /* adjust #player's position so its middle aligns with the middle of the screen */
   background-color: white;
   overflow: auto;
@@ -87,13 +90,17 @@ body {
   flex-direction: column;
   border: 5px solid;
   border-color: blueviolet;
-  height: 100px;
-  width: 600px;
+  height: 15vh;
+  width: 50vw;
   position: absolute; /* position #player absolutely */
-  bottom: 10%; /* align #player to middle */
+  bottom: 3%; /* align #player to middle */
+  left: 20vw;
   background-color: white;
   overflow: auto;
 }
+
+
+
 
 h1 {
   justify-content: center;
@@ -102,4 +109,5 @@ h1 {
   font-size: 60px;
   position: absolute;
   top: 5%;
+  left: 28vw;
 }
