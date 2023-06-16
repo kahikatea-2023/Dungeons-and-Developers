@@ -6,6 +6,8 @@ import Form from './Form'
 import { useState } from 'react'
 import NumberBox from './NumberBox'
 
+const initialMessage = ''
+
 function Game() {
   const [message, setMessage] = useState(initialMessage)
   const outcomeQuery = useQuery(['getOutcomes'], async () => {
@@ -21,8 +23,6 @@ function Game() {
 
   return (
     <>
-      <div>{message}</div>
-
       <div id="container">
         <div id="player">
           <p>
@@ -50,7 +50,7 @@ function Game() {
           </div>
           <div id="commentBox">
             <p>
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+              <div>{message}</div>
             </p>
           </div>
         </div>

@@ -65,6 +65,7 @@ body {
   border: 5px solid;
   border-color: blueviolet;
   height: 55vh;
+
   width: 22vw;   
   position: absolute; /* position #player absolutely */
   top: 50%; /* align #player to middle */
