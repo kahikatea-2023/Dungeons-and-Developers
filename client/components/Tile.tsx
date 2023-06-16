@@ -8,7 +8,7 @@ function Tile(props: Props) {
 
   return (
     <>
-      <div className="tile" onClick={() => {props.handleClick(props.outcome.outcome)}}>
+      <div id="outcomeList" onClick={() => {props.handleClick(props.outcome.outcome)}}>
         <p >{props.outcome.id}</p>
       </div>
     </>

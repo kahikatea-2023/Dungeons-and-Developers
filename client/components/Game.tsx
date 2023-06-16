@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getOutcomes } from '../apis/api'
-import { getUsers } from '../apis/api'
+import { getOutcomes, getUsers } from '../apis/api'
 import Tile from './Tile'
 import Form from './Form'
 import { useState } from 'react'
@@ -26,10 +25,19 @@ function Game() {
       <div id="container">
         <div id="player">
           <p>
-            Player: Lorem Ipsum es simplemente el texto de relleno de las
-            imprentas y
+            {!userQuery.isLoading &&
+              userQuery.data &&
+              userQuery.data.map((outcome) => {
+                return (
+                  <div className="playerItem" key={outcome.id} className="outcome">
+                    <div><strong>Name: </strong>{outcome.name}</div>
+                    <div><strong>Class: </strong> {outcome.className}</div>
+                  </div>
+                )
+              })}
           </p>
         </div>
+        <div id="numberBox"></div>
         <div id="numberBox">
           <NumberBox />
         </div>

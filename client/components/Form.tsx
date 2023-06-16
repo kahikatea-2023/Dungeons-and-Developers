@@ -5,10 +5,11 @@ import { User, UserDraft } from '../../models/models'
 
 function Form() {
   const queryClient = useQueryClient()
-  const mutations = useMutation(addUser, {
+  const mutations = useMutation({
+    mutationFn: addUser,
     onSuccess: () => {
-      queryClient.invalidateQueries('getUsers')
-    },
+      queryClient.invalidateQueries(['getUsers'])
+    }
   })
 
   const initialState = {
@@ -45,7 +46,7 @@ function Form() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Player Name: </label>
           <input
