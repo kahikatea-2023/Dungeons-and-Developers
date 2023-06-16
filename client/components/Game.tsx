@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { getOutcomes } from '../apis/api'
+import { getUsers } from '../apis/api'
 import Tile from './Tile'
+import Form from './Form'
 
 function Game() {
   // const outcomes = useAppSelector((state) => state.outcomes)
@@ -16,23 +18,10 @@ function Game() {
 
   return (
     <>
-      {!outcomeQuery.isLoading &&
-        outcomeQuery.data &&
-        outcomeQuery.data.map((outcome) => {
-          return (
-            <div key={outcome.outcome} className="outcome">
-              {outcome.outcome}
-            </div>
-          )
-        })}
+      <Form />
 
       <div id="container">
-        <div id="player">
-          <p>
-            Player: Lorem Ipsum es simplemente el texto de relleno de las
-            imprentas y
-          </p>
-        </div>
+        <div id="player"></div>
         <div id="numberBox">
           <p>
             ScoreBoard: Lorem Ipsum es simplemente el texto de relleno de las
@@ -41,7 +30,21 @@ function Game() {
         </div>
         <div id="center-content">
           <h1>Dungeons & Developers</h1>
-          <div id="canvas"></div>
+          <div id="canvas">
+            {!outcomeQuery.isLoading &&
+              outcomeQuery.data &&
+              outcomeQuery.data.map((outcome) => {
+                return (
+                  <div
+                    key={outcome.outcome}
+                    className="outcome"
+                    id="outcomeList"
+                  >
+                    {outcome.id}
+                  </div>
+                )
+              })}
+          </div>
           <div id="commentBox">
             <p>
               Lorem Ipsum es simplemente el texto de relleno de las imprentas y
