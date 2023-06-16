@@ -7,10 +7,11 @@ import { User, UserDraft } from "../../models/models"
 function Form() {
 
   const queryClient = useQueryClient()
-  const mutations = useMutation(addUser, {
+  const mutations = useMutation({
+    mutationFn: addUser,
     onSuccess: () => {
-      queryClient.invalidateQueries('getUsers')
-    },
+      queryClient.invalidateQueries(['getUsers'])
+    }
   })
 
   const initialState = {

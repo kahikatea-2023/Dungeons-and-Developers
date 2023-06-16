@@ -41,6 +41,7 @@ router.post('/user', async (req, res) => {
     //need to post the following shape
     // {id: number, name: string, classId}
     await db.addUser({ ...req.body })
+    res.sendStatus(201)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: ' Route: Something went wrong getting classes' })

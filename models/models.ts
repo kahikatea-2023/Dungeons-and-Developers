@@ -20,3 +20,10 @@ export interface User extends UserDraft {
   id: number
 }
 
+export interface Player {
+  id: number
+  name: string
+  className: string
+
+}
+
