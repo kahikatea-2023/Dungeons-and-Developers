@@ -22,6 +22,6 @@ export async function getClasses(db = connection) {
   ) as Class[]
 }
 
-export async function addUser({ id, name, classId }: UserDraft, db = connection) {
-  return await db('user').insert({ id, name, class_id: classId })
+export async function addUser({ name, classId }: UserDraft, db = connection) {
+  return await db('users').insert({ name, class_id: classId })
 }

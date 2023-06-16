@@ -1,22 +1,30 @@
 import { useQuery } from '@tanstack/react-query'
 import { getOutcomes } from '../apis/api'
+import Tile from './Tile'
 
 function Game() {
   // const outcomes = useAppSelector((state) => state.outcomes)
   // const dispatch = useAppDispatch()
 
-  const { isLoading, data } = useQuery(['getOutcomes'], async () => {
+
+  const outcomeQuery = useQuery(['getOutcomes'], async () => {
     return await getOutcomes()
+
   })
+
+  const userQuery = useQuery(['getUsers'], async () => {
+    return await getUsers()
+  })
+
   return (
     <>
-      {!isLoading &&
-        data &&
-        data.map((outcome) => {
+      <p>I'm the game</p>
+
+      {!outcomeQuery.isLoading &&
+        outcomeQuery.data &&
+        outcomeQuery.data.map((outcome) => {
           return (
-            <div key={outcome.outcome} className="outcome">
-              <div>{outcome.outcome}</div>
-            </div>
+            <div key={outcome.outcome} className='outcome'>{outcome.outcome}</div>
           )
         })}
     </>
