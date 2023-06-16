@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
 import { getOutcomes } from '../apis/api'
-import { getUsers } from '../apis/api'
 import Tile from './Tile'
 import Form from './Form'
 import { useState } from 'react'
@@ -12,26 +11,40 @@ function Game() {
 
   const userQuery = useQuery(['getUsers'], async () => {
     return await getUsers()
+
   })
 
-  const [clickedOutcomeIds, setClickedOutcomeIds] = useState([])
 
-  const handleOutcomeClick = (id) => {
-    if (clickedOutcomeIds.includes(id)) {
-      setClickedOutcomeIds(
-        clickedOutcomeIds.filter((outcomeId) => outcomeId !== id)
-      )
-    } else {
-      setClickedOutcomeIds([...clickedOutcomeIds, id])
-    }
-  }
 
   return (
     <>
-      <Form />
+      {!outcomeQuery.isLoading &&
+        outcomeQuery.data &&
+        outcomeQuery.data.map((outcome) => {
+          return (
+            <div key={outcome.outcome} className="outcome">
+              {outcome.outcome}
+            </div>
+          )
+        })}
 
       <div id="container">
-        <div id="player"></div>
+        <div id="player">
+          <p>
+            {!userQuery.isLoading &&
+              userQuery.data &&
+              userQuery.data.map((outcome) => {
+                return (
+                  <div key={outcome.id} className="outcome">
+                    <div>{outcome.name}</div>
+                    <div>{outcome.className}</div>
+
+                  </div>
+
+                )
+              })}
+          </p>
+        </div>
         <div id="numberBox">
           <p>
             ScoreBoard: Lorem Ipsum es simplemente el texto de relleno de las
@@ -51,9 +64,7 @@ function Game() {
                     id="outcomeList"
                     onClick={() => handleOutcomeClick(outcome.id)}
                   >
-                    {clickedOutcomeIds.includes(outcome.id)
-                      ? outcome.outcome
-                      : outcome.id}
+
                   </div>
                 )
               })}

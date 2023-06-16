@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Class, Outcome, User, UserDraft } from '../../models/models'
+import { Class, Outcome, Player, UserDraft } from '../../models/models'
 
 const rootUrl = '/api/v1/routes'
 
@@ -27,5 +27,5 @@ export async function addUser(newUser: UserDraft) {
 
 export async function getUsers() {
   const res = await request.get(`${rootUrl}/users`)
-  return res.body as User[]
+  return res.body as Player[]
 }

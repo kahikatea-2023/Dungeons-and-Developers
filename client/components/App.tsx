@@ -4,10 +4,14 @@ import { fetchOutcomes } from '../slices/slice'
 import Form from './Form'
 import Game from './Game'
 
+
 function App() {
   return (
     <>
+      <Form />
       <Game />
+
+
     </>
   )
 }
