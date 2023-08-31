@@ -1,33 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
-import { getOutcomes } from '../apis/api'
+import { getOutcomes, getUsers } from '../apis/api'
 import Tile from './Tile'
 import Form from './Form'
 import { useState } from 'react'
+import NumberBox from './NumberBox'
+
+const initialMessage = ''
 
 function Game() {
+  const [message, setMessage] = useState(initialMessage)
   const outcomeQuery = useQuery(['getOutcomes'], async () => {
     return await getOutcomes()
   })
 
+  function handleClick(message: string) {
+    setMessage(message)
+  }
   const userQuery = useQuery(['getUsers'], async () => {
     return await getUsers()
-
   })
-
-
 
   return (
     <>
-      {!outcomeQuery.isLoading &&
-        outcomeQuery.data &&
-        outcomeQuery.data.map((outcome) => {
-          return (
-            <div key={outcome.outcome} className="outcome">
-              {outcome.outcome}
-            </div>
-          )
-        })}
-
       <div id="container">
         <div id="player">
           <p>
@@ -35,21 +29,17 @@ function Game() {
               userQuery.data &&
               userQuery.data.map((outcome) => {
                 return (
-                  <div key={outcome.id} className="outcome">
-                    <div>{outcome.name}</div>
-                    <div>{outcome.className}</div>
-
+                  <div className="playerItem" key={outcome.id} className="outcome">
+                    <div><strong>Name: </strong>{outcome.name}</div>
+                    <div><strong>Class: </strong> {outcome.className}</div>
                   </div>
-
                 )
               })}
           </p>
         </div>
+        <div id="numberBox"></div>
         <div id="numberBox">
-          <p>
-            ScoreBoard: Lorem Ipsum es simplemente el texto de relleno de las
-            imprentas y
-          </p>
+          <NumberBox />
         </div>
         <div id="center-content">
           <h1>Dungeons & Developers</h1>
@@ -58,20 +48,17 @@ function Game() {
               outcomeQuery.data &&
               outcomeQuery.data.map((outcome) => {
                 return (
-                  <div
+                  <Tile
                     key={outcome.outcome}
-                    className="outcome"
-                    id="outcomeList"
-                    onClick={() => handleOutcomeClick(outcome.id)}
-                  >
-
-                  </div>
+                    outcome={outcome}
+                    handleClick={handleClick}
+                  />
                 )
               })}
           </div>
           <div id="commentBox">
             <p>
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+              <div>{message}</div>
             </p>
           </div>
         </div>

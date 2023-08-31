@@ -1,11 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import React, { useEffect, useState } from "react"
-import { addUser, getClasses } from "../apis/api"
-import { User, UserDraft } from "../../models/models"
-
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import React, { useEffect, useState } from 'react'
+import { addUser, getClasses } from '../apis/api'
+import { User, UserDraft } from '../../models/models'
 
 function Form() {
-
   const queryClient = useQueryClient()
   const mutations = useMutation({
     mutationFn: addUser,
@@ -27,8 +25,6 @@ function Form() {
     console.log(data)
   })
 
-
-
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const name = event.target.name
     const value = event.target.value
@@ -46,33 +42,39 @@ function Form() {
     event.preventDefault()
     mutations.mutate(userData)
     setUserData(initialState)
-
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Player Name: </label>
-          <input type="text" name="name" id="" onChange={handleChange} value={userData.name} />
+          <input
+            type="text"
+            name="name"
+            id=""
+            onChange={handleChange}
+            value={userData.name}
+          />
         </div>
         <div>
           <label htmlFor="class">Player Class</label>
-          {!isLoading && data &&
+          {!isLoading && data && (
             <select name="classId" id="" onChange={handleSelect}>
               <option value="">Select your class</option>
-              {data.map((playerClass) =>
-                <option key={playerClass.id} value={playerClass.id} >{playerClass.className}</option>
-              )}
+              {data.map((playerClass) => (
+                <option key={playerClass.id} value={playerClass.id}>
+                  {playerClass.className}
+                </option>
+              ))}
             </select>
-          }
+          )}
         </div>
         <div>
           <button type="submit">Submit</button>
         </div>
       </form>
     </>
-
   )
 }
 

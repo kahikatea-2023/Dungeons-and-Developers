@@ -8,7 +8,6 @@ const rootUrl = '/api/v1/routes'
 export async function getOutcomes() {
   const res = await request.get(`${rootUrl}/outcomes`)
 
-
   return res.body as Outcome[]
 }
 
@@ -16,7 +15,6 @@ export async function getOutcomes() {
 
 export async function getClasses() {
   const res = await request.get(`${rootUrl}/classes`)
-
   return res.body as Class[]
 }
 
