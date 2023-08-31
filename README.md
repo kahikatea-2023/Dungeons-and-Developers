@@ -9,22 +9,25 @@ A group project with the goal of rolling some dice and getting some funny outcom
 
 We had loads of fun making this with a stressful end of day git merge fest. We had so many wishes for this and requests to add some of our stretch goals (detailed below). 
 
+### How to Play
 
-### Stretch Goals
+Click the CLICK ME!!! then click the corresponding tile to see your outcome
+
+## Stretch Goals
 
 - Turn it into a board game
 - Adding a 3D dice! We almost had this implemented but had issues due to deprecated dependant packages.
 - Turn tracker
 - Users can add custom challenges
 
-### Tech
+## Tech
 
 - React
 - Tanstack (react-query)
 - SQLite3
 - TypeScript
 
-### Installation
+## Installation
 
 ```
 git clone 
