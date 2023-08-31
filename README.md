@@ -1,36 +1,40 @@
-# Boilerplate: Fullstack with Sass
+# Dungeons and Developers!
 
-## Setup
+![image](https://github.com/kahikatea-2023/Dungeons-and-Developers/assets/26266678/973cac1d-2f2b-4da1-87e5-90b6406d0857)
 
-### What's included
+Made by: Jane (Vibes Lead), Jordan (Product Owner), Leroy (Front End Lead), Maia (Git Lead) and Andrew (Back End Lead)
+---
 
-This repo includes:
+A group project with the goal of rolling some dice and getting some funny outcomes relevant to the developer experience. We used ChatGPT to write our hilarious outcomes. Add your players and take turns rolling to see who's the best dev in the dungeon!
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Jest and testing library
-* configuration for server-side debugging in VS Code
-* configuration for preprocessing Sass
-* a single client-side test (`client/components/App.test.js`)
+We had loads of fun making this with a stressful end of day git merge fest. We had so many wishes for this and requests to add some of our stretch goals (detailed below). 
+
+
+### Stretch Goals
+
+- Turn it into a board game
+- Adding a 3D dice! We almost had this implemented but had issues due to deprecated dependant packages.
+- Turn tracker
+- Users can add custom challenges
+
+### Tech
+
+- React
+- Tanstack (react-query)
+- SQLite3
+- TypeScript
 
 ### Installation
 
-#### **From the Github UI**
-
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
-
-#### **From the command line**
-
 ```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
+git clone 
 cd [your-project-name]
 npm install # to install dependencies
+npm run knex migrate:latest to make tables
+npm run knex seed:run to seed tables
 npm run dev # to start the dev server
 ```
 
 You can find the server running on [http://localhost:3000](http://localhost:3000).
 
 ---
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=boilerplate-fullstack-scss)
