@@ -21,49 +21,50 @@ function Game() {
   })
 
   return (
-    <>
-      <div id="container">
+    <div id="container">
+      <h1>Dungeons & Developers</h1>
+
+      <div className="wrapper">
         <div id="player">
-          <p>
-            {!userQuery.isLoading &&
-              userQuery.data &&
-              userQuery.data.map((outcome) => {
-                return (
-                  <div className="playerItem" key={outcome.id} className="outcome">
-                    <div><strong>Name: </strong>{outcome.name}</div>
-                    <div><strong>Class: </strong> {outcome.className}</div>
+          {!userQuery.isLoading &&
+            userQuery.data &&
+            userQuery.data.map((outcome) => {
+              return (
+                <div className="playerItem" key={outcome.id}>
+                  <div>
+                    <strong>Name: </strong>
+                    {outcome.name}
                   </div>
-                )
-              })}
-          </p>
+                  <div>
+                    <strong>Class: </strong> {outcome.className}
+                  </div>
+                </div>
+              )
+            })}
         </div>
-        <div id="numberBox"></div>
+        <div className="" id="canvas">
+          {!outcomeQuery.isLoading &&
+            outcomeQuery.data &&
+            outcomeQuery.data.map((outcome) => {
+              return (
+                <Tile
+                  key={outcome.outcome}
+                  outcome={outcome}
+                  handleClick={handleClick}
+                />
+              )
+            })}
+        </div>
         <div id="numberBox">
           <NumberBox />
         </div>
-        <div id="center-content">
-          <h1>Dungeons & Developers</h1>
-          <div id="canvas">
-            {!outcomeQuery.isLoading &&
-              outcomeQuery.data &&
-              outcomeQuery.data.map((outcome) => {
-                return (
-                  <Tile
-                    key={outcome.outcome}
-                    outcome={outcome}
-                    handleClick={handleClick}
-                  />
-                )
-              })}
-          </div>
-          <div id="commentBox">
-            <p>
-              <div>{message}</div>
-            </p>
-          </div>
-        </div>
       </div>
-    </>
+      <div id="commentBox">
+        <p>
+          <div>{message}</div>
+        </p>
+      </div>
+    </div>
   )
 }
 
